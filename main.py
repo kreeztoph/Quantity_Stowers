@@ -56,13 +56,13 @@ if uploaded_file:
     filtered_raw = raw_df[(raw_df["Date"].isin(date_filter)) & (raw_df["Manager"].isin(manager_filter))]
     # ========== KPIs ==========
     st.subheader("📌 Key KPIs Summary")
-    kpi1, kpi2, kpi3, kpi4, kpi5 = st.columns(5)
+    kpi1, kpi2, kpi3, kpi4 = st.columns(4)
     kpi1.metric("Total Units", f"{filtered_raw['Total Units'].sum():,.0f}",border=True)
-    kpi2.metric("Total Jobs", f"{filtered_raw['Total Job'].sum():,.0f}",border=True)
+    # kpi2.metric("Total Jobs", f"{filtered_raw['Total Job'].sum():,.0f}",border=True)
     total_hours = filtered_raw["Total Hours"].sum()
-    kpi3.metric("Total Hours", f"{total_hours:,.2f}",border=True)
-    kpi4.metric("Overall UPH", f"{filtered_raw['Total Units'].sum() / total_hours:.2f}" if total_hours > 0 else "0",border=True)
-    kpi5.metric('Total Number of Employees',len(agg_df[agg_df["Manager"].isin(manager_filter)]), border=True)
+    kpi2.metric("Total Hours", f"{total_hours:,.2f}",border=True)
+    kpi3.metric("Overall UPH", f"{filtered_raw['Total Units'].sum() / total_hours:.2f}" if total_hours > 0 else "0",border=True)
+    kpi4.metric('Total Number of Employees',len(agg_df[agg_df["Manager"].isin(manager_filter)]), border=True)
 
     
     Row1col1, Row1col2 = st.columns([0.6,0.4], border=True)
