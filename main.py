@@ -113,8 +113,6 @@ if uploaded_file:
     fig_uph.update_layout(xaxis_tickangle=-45, height=500)
     st.plotly_chart(fig_uph, use_container_width=True)
 
-    
-
     st.subheader("📈 Daily Trend - Total UPH per Employee")
 
     # Group by Date and Name, sum Total Units and Total Hours
